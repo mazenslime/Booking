@@ -7,11 +7,6 @@ import Slider from '../../Layout/slideNave/Slider'
 function Navbar() {
     const [open, setOpen] = React.useState(false)
   const navigator=useNavigate()
-  window.addEventListener('onClick',()=>{
-    if(open){
-        setOpen(false)
-    }
-  })
   return (
     <div className='w-full flex justify-between items-center bg-white px-10 py-10 '>
         <div>
