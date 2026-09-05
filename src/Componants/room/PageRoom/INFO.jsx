@@ -3,17 +3,16 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHeart,faStar} from '@fortawesome/free-solid-svg-icons'
 import Share from '../../share/share'
 import Button from '../../Layout/Button/Button'
-{/* <FontAwesomeIcon icon={faHeart} /> */}
 import { useNavigate } from 'react-router';
-function INFO({contact,address,Location,rating=0,reviews,name,roomType,price,isFavorite,onToggleFavorite}) {
+function INFO({Room,contact,address,Location,rating=0,reviews,name,roomType,price,isFavorite,onToggleFavorite}) {
   const navigate = useNavigate();
-  function handleCheckIn() {
-    // Implement your check-in logic here
-    // cheack you are login first
-    if (localStorage.getItem('token')) {
+  function handleCheckIn() {    
+    if (!localStorage.getItem('token')) {
       navigate('/login');
+    }else{
+      const checkIn = new Date().toISOString().split('T')[0];
+      navigate('/checkout',{state:{Room,checkIn}});
     }
-    console.log('Check-in button clicked');
   }
   return (
     <div className='w-full flex-col gap-4  '>

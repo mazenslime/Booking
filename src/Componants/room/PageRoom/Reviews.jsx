@@ -21,7 +21,7 @@ function Stars({ rating = 0, onSelect }) {
 
 function Reviews({ rating = 0, reviewCount = 0, items = testimonials }) {
     const [list, setList] = useState(items)
-    const [name, setName] = useState('')
+    const [name, setName] = useState(localStorage.getItem('token') ? JSON.parse(localStorage.getItem('user')).username : '')
     const [comment, setComment] = useState('')
     const [userRating, setUserRating] = useState(5)
 
@@ -94,13 +94,16 @@ function Reviews({ rating = 0, reviewCount = 0, items = testimonials }) {
             <div className="space-y-3 rounded-xl border border-gray-200 bg-gray-50 p-4">
                 <h3 className="font-bold text-gray-900">Write a review</h3>
                 <Stars rating={userRating} onSelect={setUserRating} />
-                <input
+                {
+                    localStorage.getItem('token') ? null : (
+                    <input
                     type="text"
                     placeholder="Your name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 outline-none"
-                />
+                />)
+                }
                 <textarea
                     rows={3}
                     placeholder="Share your stay"

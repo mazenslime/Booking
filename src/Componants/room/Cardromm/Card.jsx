@@ -6,15 +6,15 @@ import { useNavigate, useOutletContext } from 'react-router'
 function Card({hotelid,id,img='',title='',roomType='',isAvailable='',amenities=[],price='',hotelName='',room}){
   const [Width,setwidth]=useState(window.innerWidth)
   const Navgator=useNavigate()
-  const { Loveroom, setLoveroom } = useOutletContext()
-  const Love = Loveroom.some((favoriteRoom) => favoriteRoom._id === id)
+  const { Loveroom, setLoveroom } = useOutletContext([]);
+  const Love = Loveroom.some((favoriteRoom) => favoriteRoom?._id === id)
   function click(){
     Navgator(`/hotel/${hotelid}/${id}`)
   }
   function toggleFavorite(){
     setLoveroom((previousRooms) => Love
-      ? previousRooms.filter((favoriteRoom) => favoriteRoom._id !== id)
-      : [...previousRooms, room]
+      ? previousRooms.filter((favoriteRoom) => favoriteRoom?._id !== id)
+      : room ? [...previousRooms, room] : previousRooms
     )
   }
   window.addEventListener('resize',()=>{

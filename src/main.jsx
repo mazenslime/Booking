@@ -18,6 +18,10 @@ import Favorites from './pages/favorites/Favourits.jsx'
 import RoomFav from './pages/favorites/RoomFav.jsx'
 import HotelFav from './pages/favorites/HotelFav.jsx'
 import Room from './pages/Room/Room.jsx'
+import Login from './auth/Login.jsx'
+import Rejester from './auth/Rejester.jsx'
+import Booking from './pages/Bookings/Booking.jsx'
+import Cheackout from './pages/Bookings/Cheackout.jsx'
 
 const Route=createBrowserRouter([
   {
@@ -32,11 +36,15 @@ const Route=createBrowserRouter([
 
   },
   {
+    path:'*'
+  },
+  {
     path:'/login',
-    element: <login />
+    element: <Login/>
   },
   {
     path:'/register',
+    element: <Rejester/>
   },
   {
     path:'/search',
@@ -69,10 +77,12 @@ const Route=createBrowserRouter([
     element:<Room/>
   },
   {
-    path:'/checkout'
+    path:'/Booking',
+    element:<Booking/>
   },
   {
-    path:'/booking/confirmation/:bookingId'
+    path:'/checkout',
+    element:<Cheackout/>
   },
   {
     path:'/favorites',

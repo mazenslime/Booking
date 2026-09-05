@@ -17,10 +17,6 @@ function SearchLoc() {
 
     return (
         <div className="flex flex-col space-y-8">
-            <div className="flex gap-2">
-             <Fillter label={'Fillter'} data={data} setData={setData}/>
-             <Fillter label={'Sort'} data={data} setData={setData}/>
-            </div>
             <div className="flex flex-col space-y-8">
                 {
                     data.length > 0 ? (
